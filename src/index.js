@@ -3,24 +3,44 @@ import ReactDOM from "react-dom";
 
 import "./styles.css";
 
-var USER_DATA = {
-  name: "Ringo Singson",
-  username: "ringosingson",
-  img:
-    "https://avatars1.githubusercontent.com/u/15993546?s=400&u=df3e33d3a1737531c7ebefe5c3b0fa4e971f4f5c&v=4"
-};
-
-class Badge extends React.Component {
+class Avatar extends React.Component {
   render() {
     return (
-      <div>
-        <img src={this.props.user.img} />
-        <h1>Name: {this.props.user.name}</h1>
-        <h3>Username: {this.props.user.username}</h3>
-      </div>
-    );
+      <img src={this.props.img}/>
+    )
   }
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Badge user={USER_DATA} />, rootElement);
+class Label extends React.Component {
+  render() {
+    return (
+      <h1>Name:{this.props.name} </h1>
+    )
+  }
+}
+
+class ScreenName extends React.Component {
+  render() {
+    return (
+      <h3>Username: {this.props.username}<h3/>
+    )
+      }
+    }
+    
+class Badge extends React.Component {
+          render() {
+        return(
+        <div>
+        <Avatar img = {this.props.user.img}/>
+        <Label name= {this.props.user.name}/>
+        <ScreenName username= {this.props.user.username}/>
+        </div>
+    )
+      }
+}
+
+ReactDOM.render(<Badge user = {{
+          name: "Ringo Singson",
+          username: "ringosingson",
+          img: "https://avatars1.githubusercontent.com/u/15993546?s=400&u=df3e33d3a1737531c7ebefe5c3b0fa4e971f4f5c&v=4",
+        }} />, document.getElementById("root");
